@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <style>
+            h1{
+                text-align: center;
+                font-size: 50px;
+                font-family:cursive;
+                color: blue;
+                padding-top: 50px;
+            }
+            h4{
+                text-align: center;
+                font-size: 30px;
+                font-family:Arial, Helvetica, sans-serif;
+                color: black;
+                padding-top: 50px;
+                /* padding-bottom: 20px; */
+                padding-left: 220px;
+                padding-right: 230px;
+            }
+            body{
+                background-image: url('https://img.freepik.com/free-vector/3d-triangle-background-with-vivid-colors_23-2148403816.jpg?w=740&t=st=1680688031~exp=1680688631~hmac=6e448d7666443d41a124c6948e82f16286b0ccf2ed87b4c86c38776c3fda12a4');
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            img{
+                padding-left: 750px;
+                padding-bottom: 20px;
+            }  
+            #id_file{
+                width: 500px;
+                height:50px;
+                font-size: 18px;    
+            }
+            .flex-parent {
+                display: flex;
+            }
+
+            .jc-center {
+                 justify-content: center;
+            }
+
+            button.margin-right {
+                margin-right: 20px;
+            }
+        </style>
+    </head>
+    <body> 
+        <h1>Upscale and Enhance Your Images for FREE</h1>
+        <h4>Upscale your image to 2x or 4x without losing any textures or details with our AI tool. 
+            Use our super-resolution tool and bring new life to your images.</h4>
+        <img id="output" width="200" />    
+        <form method="POST" class="post-form" enctype="multipart/form-data" style="width:200px; margin: 0 auto;">  
+                {% csrf_token %}  
+                <!-- {{ form.as_p }}   -->
+                <label for="id_file"></label>
+                <input type="file" id="id_file" required name="file" >
+                <!-- <select id="id_upscale" required name="upscale">       
+                    <option value="0">--Select Upscale type--</option>     
+                    <option value="1">x2</option>
+                    <option value="2">x3</option>
+                    <option value="3">x4</option>
+                </select> -->
+                <div class="flex-parent jc-center"> <button type="submit" name="btn1" class="save btn btn-default" style="width:200px; height:40px; font-size: 20px; font-family: cursive; ">2x</button>     
+                 <button type="submit" name="btn2" class="save btn btn-default" style="width:200px; height:40px; font-size: 20px; font-family: cursive; ">3x</button>  
+                 <button type="submit" name="btn3" class="save btn btn-default" style="width:200px; height:40px; font-size: 20px; font-family: cursive; ">4x</button>  
+                 <button type="submit" name="btn4" class="save btn btn-default" style="width:200px; height:40px; font-size: 20px; font-family: cursive; ">8x</button>  </div>         
+            </form>
+        <script>
+            var loadFile = function(event) {
+                var image = document.getElementById('output');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };
+            </script>
+            <!-- <script type = "text/javascript">  
+                function handle_uploaded_file() {   
+                alert("how are you");  
+                         }  
+                </script>   -->
+    </body>  
+</html>
